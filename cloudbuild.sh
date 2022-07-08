@@ -13,7 +13,7 @@ do
     TAG="$MODEL_VERSION"
     gcloud builds submit --config cloudbuild.yaml . --substitutions=_ROS_VERSION="$ROS_VERSION",_TAG="$TAG",_MODEL_VERSION="$HF_VERSION",_ORGANIZATION="$ORGANIZATION" --timeout=10000 &
     pids+=($!)
-    echo Dispatched "$VERSION" on ROS "$ROS_VERSION"
+    echo Dispatched "$HF_VERSION" on ROS "$ROS_VERSION"
   done
 done
 

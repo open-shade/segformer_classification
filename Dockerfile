@@ -1,5 +1,5 @@
 ARG ROS_VERSION
-FROM shaderobotics/ros:${ROS_VERSION}
+FROM shaderobotics/huggingface:${ROS_VERSION}
 
 ARG ROS_VERSION
 ENV ROS_VERSION=$ROS_VERSION
