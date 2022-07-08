@@ -1,16 +1,18 @@
 declare -a ROS_VERSIONS=( "foxy" "galactic" "humble" "rolling" )
 
 ORGANIZATION="nvidia"
-declare -a MODEL_VERSIONS=( "mit-b0" "mit-b5" "mit-b3" "mit-b4" "mit-b2" "mit-b1" )
+MODEL_NAME="mit"
+declare -a MODEL_VERSIONS=( "b0" "b5" "b3" "b4" "b2" "b1" )
 
 for VERSION in "${ROS_VERSIONS[@]}"
 do
   for MODEL_VERSION in "${MODEL_VERSIONS[@]}"
   do
     ROS_VERSION="$VERSION"
-    gcloud builds submit --config cloudbuild.yaml . --substitutions=_ROS_VERSION="$ROS_VERSION",_MODEL_VERSION="$MODEL_VERSION",_ORGANIZATION="$ORGANIZATION" --timeout=10000 &
+    VERSION="$MODEL_NAME-$MODEL_VERSION"
+    gcloud builds submit --config cloudbuild.yaml . --substitutions=_ROS_VERSION="$ROS_VERSION",_TAG="$MODEL_VERSION",_MODEL_VERSION="$VERSION",_ORGANIZATION="$ORGANIZATION" --timeout=10000 &
     pids+=($!)
-    echo Dispatched "$MODEL_VERSION" on ROS "$ROS_VERSION"
+    echo Dispatched "$VERSION" on ROS "$ROS_VERSION"
   done
 done
 
