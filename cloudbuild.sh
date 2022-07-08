@@ -9,8 +9,9 @@ do
   for MODEL_VERSION in "${MODEL_VERSIONS[@]}"
   do
     ROS_VERSION="$VERSION"
-    VERSION="$MODEL_NAME-$MODEL_VERSION"
-    gcloud builds submit --config cloudbuild.yaml . --substitutions=_ROS_VERSION="$ROS_VERSION",_TAG="$MODEL_VERSION",_MODEL_VERSION="$VERSION",_ORGANIZATION="$ORGANIZATION" --timeout=10000 &
+    HF_VERSION="$MODEL_NAME-$MODEL_VERSION"
+    TAG="$MODEL_VERSION"
+    gcloud builds submit --config cloudbuild.yaml . --substitutions=_ROS_VERSION="$ROS_VERSION",_TAG="$TAG",_MODEL_VERSION="$HF_VERSION",_ORGANIZATION="$ORGANIZATION" --timeout=10000 &
     pids+=($!)
     echo Dispatched "$VERSION" on ROS "$ROS_VERSION"
   done
