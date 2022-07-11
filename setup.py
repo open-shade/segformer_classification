@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'segformer_ros2'
+package_name = 'segformer'
 
 setup(
     name=package_name,
@@ -31,7 +31,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'segformer_ros2 = segformer_ros2.segformer_ros2:main'
+            'segformer = segformer.segformer:main'
         ],
     },
 )
