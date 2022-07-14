@@ -3,9 +3,11 @@
 <package format="3">
   <name>segformer</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="lidar@todo.todo">lidar</maintainer>
-  <license>TODO: License declaration</license>
+  <description>SegFormer has two appealing features: 1) SegFormer comprises a novel hierarchically structured Transformer encoder which outputs multiscale features. 
+  It does not need positional encoding, thereby avoiding the interpolation of 
+  positional codes which leads to decreased performance when the testing resolution differs from training. 2) SegFormer avoids complex decoders. We implement this with an image classification head.</description>
+  <maintainer email="support@shaderobotics.com">Shade Robotics</maintainer>
+  <license>apache-2.0</license>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
